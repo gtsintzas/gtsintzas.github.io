@@ -1,0 +1,65 @@
+// Code block chrome. Imported AFTER the theme so it can override sassline's
+// `.typeset code` / `.typeset pre` rules, which is why this is not part of
+// _syntax.scss (that one is imported early, in the theme's own slot).
+
+.typeset {
+
+  // The theme sets `line-height: 1rem` against a ~1.07rem font-size, so code
+  // lines overlap. This is the single biggest readability fix here.
+  code {
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+
+  // Fenced blocks: an editor pane.
+  .highlighter-rouge {
+    margin-bottom: 1.5rem;
+
+    .highlight {
+      background: #282C34;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    pre {
+      background: none;
+      margin: 0;
+      padding: .8rem 1rem;
+      border-radius: 0;
+
+      // The theme sets `white-space: pre-wrap` + `word-break: break-all`, which
+      // splits identifiers mid-token. Code scrolls sideways instead.
+      white-space: pre;
+      word-break: normal;
+      word-wrap: normal;
+      overflow-x: auto;
+    }
+
+    code {
+      background: none;
+      padding: 0;
+      text-shadow: none;
+    }
+  }
+
+  // Inline `code` stays light, so it reads as part of the sentence rather than
+  // as a miniature code block.
+  :not(pre) > code {
+    padding: .1em .35em;
+    border-radius: 3px;
+    background: $codeBackgroundColour;
+    border: 1px solid rgba($bodyColour, .12);
+  }
+
+  // Optional Rouge line numbers ({% highlight lang linenos %}).
+  .rouge-table {
+    margin: 0;
+    border: 0;
+    td { padding: 0; border: 0 }
+    .gutter {
+      color: rgba(171, 178, 191, .45);
+      user-select: none;
+      padding-right: .9rem;
+    }
+  }
+}

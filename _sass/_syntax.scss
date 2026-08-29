@@ -1,0 +1,67 @@
+// Shadows the Garth theme's _sass/_syntax.scss (see _colors.scss for why this
+// works). The theme ships a GitHub-light palette whose token classes are
+// declared UNSCOPED -- bare `.c`, `.k`, `.o`, `.no`, `.err` at the top level,
+// which collide with any same-named class elsewhere on the site. Replacing the
+// file drops those globals entirely; everything here is scoped to `.highlight`.
+//
+// Palette: One Dark. Code blocks read as an editor pane regardless of the page
+// colours in _colors.scss, so the two can be changed independently.
+
+$codeBg:        #282C34;
+$codeFg:        #ABB2BF;
+$codeComment:   #5C6370;
+$codeRed:       #E06C75; // variables, tags
+$codeOrange:    #D19A66; // numbers, constants
+$codeYellow:    #E5C07B; // classes, types
+$codeGreen:     #98C379; // strings
+$codeCyan:      #56B6C2; // builtins, escapes
+$codeBlue:      #61AFEF; // functions
+$codePurple:    #C678DD; // keywords
+
+.highlight {
+  color: $codeFg;
+
+  // Comments
+  .c, .ch, .cd, .cm, .c1, .cs { color: $codeComment; font-style: italic }
+  .cp, .cpf                   { color: $codeComment }
+
+  // Keywords
+  .k, .kc, .kd, .kn, .kp, .kr { color: $codePurple }
+  .kt                         { color: $codeYellow }
+
+  // Names
+  .n, .nx, .py, .nl           { color: $codeFg }
+  .na, .nv, .vc, .vg, .vi, .nt { color: $codeRed }
+  .nc, .nn                    { color: $codeYellow }
+  .nf, .fm, .nd               { color: $codeBlue }
+  .nb, .bp                    { color: $codeCyan }
+  .no, .ni, .ne               { color: $codeOrange }
+
+  // Strings
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .sh, .s1, .ss, .sx { color: $codeGreen }
+  .se, .si                    { color: $codeCyan }
+  .sr                         { color: $codeCyan }
+
+  // Numbers
+  .m, .mb, .mf, .mh, .mi, .mo, .il { color: $codeOrange }
+
+  // Operators and punctuation
+  .o, .ow                     { color: $codeCyan }
+  .p                          { color: $codeFg }
+
+  // Errors. The theme gave these a pink background box, which fires constantly
+  // on perfectly valid CSS and shell snippets -- tint the text only.
+  .err                        { color: $codeRed; background: none }
+
+  // Generic / diff
+  .gd  { color: $codeRed;     background: rgba(224, 108, 117, .12) }
+  .gi  { color: $codeGreen;   background: rgba(152, 195, 121, .12) }
+  .gh, .gu { color: $codeBlue; font-weight: 600 }
+  .gp  { color: $codeComment }
+  .ge  { font-style: italic }
+  .gs  { font-weight: 600 }
+  .gr, .gt { color: $codeRed }
+  .go  { color: $codeFg }
+  .hll { background: rgba(255, 255, 255, .07) }
+  .w   { color: transparent }
+}

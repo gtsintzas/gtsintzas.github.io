@@ -2,9 +2,25 @@
 title: false # Keeps this file out of the navbar, which is built from site.pages
 ---
 
-// Overrides the theme's own assets/styles.scss so we can append our styles to
-// it. `garth` is the theme's entry point; ours go after it so they can use the
-// theme's variables and win on source order.
+// The theme's own assets/styles.scss just does `@import "garth"`. We inline
+// that import list instead, because it is the only way to recolour the theme:
+//
+// Sass resolves `@import "colors"` relative to the importing file before it
+// consults the load path, so the theme's garth.scss always finds the theme's
+// own _colors.scss -- putting a _colors.scss in our _sass/ does nothing. Import
+// the partials from here, though, and "colors" has no sibling to match, so it
+// falls through to the load path, where our _sass/ is searched first.
+//
+// Keep this list in sync with the theme's _sass/garth.scss.
+@import
+  "normalize",
+  "colors", // Ours: _sass/_colors.scss
+  "sassline-base",
+  "syntax",
+  "flex",
+  "theme"
+;
 
-@import "garth";
+// Our styles go last so they can use the theme's variables and win on source order.
 @import "toc";
+@import "code";

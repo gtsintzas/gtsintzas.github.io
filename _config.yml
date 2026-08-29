@@ -70,9 +70,9 @@ defaults:
 
 # 6. Site settings
 encoding: utf-8
-title: "KlariNoX"
+title: "Ioannis Tsintzas"
 description: "Personal site of KlariNoX: CTF writeups, projects and more."
-logo: "/assets/logo.svg"
-url: "https://klarinox.dev"
+logo: "/assets/logo.jpg"
+url: "https://gtsintzas.github.io"
 baseurl: ""
 lang: en

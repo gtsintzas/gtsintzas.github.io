@@ -1,0 +1,21 @@
+// Shadows the Garth theme's own _sass/_colors.scss.
+//
+// Jekyll searches this site's _sass/ before the remote theme's, so `@import
+// "colors"` inside garth.scss resolves here instead. The theme's variables are
+// plain assignments (no `!default`), so shadowing the whole file is the only
+// way to change them -- setting them before `@import "garth"` would just get
+// overwritten.
+//
+// Every colour in the theme, and in _toc.scss, derives from these eight.
+// Values below are the theme's originals; edit them to recolour the site.
+
+$bodyColour: #263238;
+$headingColour: #12191D;
+$captionColour: #62757F;
+
+$linkColour: #0B6BCB;
+$hoverColour: #08529C;
+
+$backgroundColour: #ECEFF1;
+$codeBackgroundColour: #E2E7EA;
+$white: #fff;
