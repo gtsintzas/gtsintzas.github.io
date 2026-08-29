@@ -2,7 +2,7 @@
 title: Gaslight CTF 2026
 date: 2026-08-17
 categories: [misc, rev]
-summary: "Placeholder"
+summary: "Placeholder "
 published: true
 ---
 
