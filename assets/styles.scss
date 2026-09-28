@@ -22,5 +22,7 @@ title: false # Keeps this file out of the navbar, which is built from site.pages
 ;
 
 // Our styles go last so they can use the theme's variables and win on source order.
+@import "layout";
 @import "toc";
+@import "prose";
 @import "code";

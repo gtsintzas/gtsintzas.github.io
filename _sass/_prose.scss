@@ -1,0 +1,51 @@
+// Prose rhythm. Imported AFTER the theme so it can override sassline's own
+// block spacing (same specificity, later source order wins -- including over
+// sassline's per-breakpoint rules, since media queries add no specificity).
+
+// Sassline puts every block on a 2rem baseline grid: a `padding-top` that drops
+// the first line onto the grid, plus a `margin-bottom` that fills out the rest
+// of the line. On paragraphs the pair adds up to exactly 2rem, so consecutive
+// paragraphs sit a full 4rem apart -- one entirely blank line between each,
+// which reads as a section gap rather than as a paragraph break.
+//
+// Only `margin-bottom` is cut. The `padding-top` has to stay: sassline pairs it
+// with *negative* heading margins (h4's is -.46rem) to close the gap under a
+// heading, so zeroing it would pull the first paragraph up into its heading.
+$proseGap: .4rem; // + the ~.6rem padding-top left in place = ~1rem between blocks.
+
+.typeset {
+
+  p,
+  ul,
+  ol,
+  dl {
+    margin-bottom: $proseGap;
+  }
+
+  // Sassline hangs the quote's accent bar off each <p> inside the blockquote
+  // rather than off the blockquote itself, so a quote of more than one
+  // paragraph draws one bar per paragraph. The theme's 1.8rem gap between them
+  // read as two separate quotes; at prose spacing it reads as a single bar with
+  // a notch cut out of it. Move the chrome up onto the <blockquote>, so it is
+  // one bar however many paragraphs it holds.
+  //
+  // `margin-left: -1rem` (theme, >=40em) still hangs the bar into the margin,
+  // and `font-style: italic` still comes from the theme's `blockquote p`.
+  blockquote {
+    border-left: .15rem solid $linkColour;
+    padding: .3rem 0 .3rem 1rem;
+    margin-bottom: 1rem;
+
+    p {
+      border-left: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      margin-bottom: $proseGap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

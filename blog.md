@@ -3,6 +3,6 @@ title: Blog
 nav_order: 3
 ---
 
-Blog Placeholder. Coming soon™.
+Random posts about things im doing in my life. Usually tech related.
 
 {% include post-list.html %}

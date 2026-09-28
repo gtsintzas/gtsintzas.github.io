@@ -12,15 +12,27 @@
   }
 
   // Fenced blocks: an editor pane.
+  //
+  // Spacing follows the same padding-top/margin-bottom idiom the theme uses for
+  // every other block, so a code block sits in the prose at the same rhythm as
+  // a paragraph. The theme has no rule for these, so the `padding-top` a
+  // paragraph gets for free is set here by hand. `$proseGap` comes from
+  // _prose.scss, which styles.scss imports first.
   .highlighter-rouge {
-    margin-bottom: 1.5rem;
+    padding-top: .6rem;
+    margin-bottom: $proseGap;
 
-    .highlight {
+    // Child combinator, not a descendant one: Rouge also puts `.highlight` on
+    // the <pre> itself, and a descendant selector would hand the <pre>
+    // `overflow: hidden` at a higher specificity than the `pre` rule below --
+    // which is exactly what stops a wide block from scrolling.
+    > .highlight {
       background: #282C34;
       border-radius: 5px;
       overflow: hidden;
     }
 
+    pre.highlight,
     pre {
       background: none;
       margin: 0;
@@ -33,6 +45,7 @@
       word-break: normal;
       word-wrap: normal;
       overflow-x: auto;
+      overflow-y: hidden;
     }
 
     code {

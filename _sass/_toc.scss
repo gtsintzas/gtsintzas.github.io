@@ -179,8 +179,8 @@ $tocBreakpointMax: $tocBreakpoint - 0.0625em;
   }
 
   .main--writeup .article {
-    flex: 1 1 auto;
-    min-width: 0; // Stops wide code blocks from pushing the sidebar off-screen
+    flex: 1 1 auto; // `min-width: 0`, which stops wide code blocks from pushing
+                    // the sidebar off-screen, now comes from _layout.scss.
   }
 
   .toc {

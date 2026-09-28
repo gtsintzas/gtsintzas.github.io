@@ -21,6 +21,18 @@ layout: default
     {% include writeup-meta.html writeup=page %}
     {{ content }}
 
+    {% comment %}
+      Same markup as the blog's post-pagination.html, so the link picks up the
+      theme's existing centred, muted paginator style.
+
+      It sits inside the article rather than beside it: on wide screens `main`
+      is the flex row holding the sidebar and the writeup, so a sibling here
+      would be laid out as a third column.
+    {% endcomment %}
+    <nav class="nav  nav--paginator">
+      <a href="{{ "/writeups/" | relative_url }}" class="pagination  pagination--previous">&larr; All writeups</a>
+    </nav>
+
   </article>
 
 </main>
