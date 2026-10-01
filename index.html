@@ -1,19 +1,20 @@
 ---
-layout: landing
-nav_exclude: true # The logo already links here
+layout: default
 ---
-
-<h1>Ioannis Tsintzas</h1>
-
 <p>
   Hi, I'm Ioannis Tsintzas (Although, more often than not I go by John) and this is my personal website. Welcome.
   I usually break things, and sometimes I fix them. You can read more about it in the following sections! (Hopefully)
 </p>
-
-<h2>Where to go</h2>
-
 <ul>
-  <li><a href="{{ "/writeups/" | relative_url }}">CTF Writeups</a> - writeups from the competitions I've played, one page per event.</li>
-  <li><a href="{{ "/blog/" | relative_url }}">Blog</a> - notes, projects and everything that isn't a CTF writeup.</li>
-  <li><a href="{{ "/about/" | relative_url }}">About Me</a> - who I am and how to get in touch.</li>
+    {% for post in paginator.posts %}
+      <li>
+          <h2><a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a></h2>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
+          {% if post.summary %}
+            <p>{{  post.summary }}</p>
+          {% else %}
+            <p>{{ post.content | strip_html | truncatewords:50 }}</p>
+          {% endif %}
+      </li>
+    {% endfor %}
 </ul>

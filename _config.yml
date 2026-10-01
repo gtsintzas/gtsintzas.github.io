@@ -1,78 +1,37 @@
-# Site configuration for klarinox.dev
-#
-# Note: Jekyll does NOT read the remote theme's own _config.yml, so every
-# setting the Garth theme relies on has to be declared here.
-#
-# 1. Files excluded from Jekyll builds
-# 2. Plugins and theme
-# 3. Jekyll settings
-# 4. Collections
-# 5. Front matter defaults
-# 6. Site settings
+title: "Ioannis Tsintzas"
+description: "Personal site of Ioannis Tsintzas: CTF writeups, projects and more."
 
+baseurl: ""
 
-# 1. Files excluded from Jekyll builds
-# README.md must stay excluded: the github-pages gem enables
-# jekyll-optional-front-matter, which would otherwise turn it into a page
-# (and therefore into a navbar entry).
+permalink: /:title
+paginate: 3
+paginate_path: /page/:num/
+
 exclude:
 - README.md
 - Gemfile
 - Gemfile.lock
 
-# 2. Plugins and theme
-plugins:
-- jekyll-remote-theme
-remote_theme: daviddarnes/garth
-
-# 3. Jekyll settings
-sass:
-  style: compressed
-permalink: /blog/:title/ # Blog post URLs, e.g. /blog/hello-world/
-excerpt_separator: <!-- more --> # Marks the end of the excerpt shown in post lists
-timezone: Europe/Athens
-
-# 4. Collections
-# Headings and intro prose for the listing pages live in blog.md and
-# writeups.md, not here.
-collections:
-  posts:
-    output: true
-  writeups:
-    output: true
-    # Same as Jekyll's default for collections, spelled out so the URL scheme is obvious:
-    # _writeups/htb-cyber-apocalypse-2026.md -> /writeups/htb-cyber-apocalypse-2026/
-    permalink: /writeups/:path/
-
-# 5. Front matter defaults
-# jekyll-default-layout (bundled with the github-pages gem) already guesses
-# layouts for pages and posts, but it ignores collections and only runs on
-# GitHub Pages. Declaring the defaults here keeps the site portable.
 defaults:
--
-  scope:
-    path: ""
-    type: pages
-  values:
-    layout: page
--
-  scope:
-    path: ""
-    type: posts
-  values:
-    layout: post
--
-  scope:
-    path: ""
-    type: writeups
-  values:
-    layout: writeup
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
-# 6. Site settings
-encoding: utf-8
-title: "Ioannis Tsintzas"
-description: "Personal site of KlariNoX: CTF writeups, projects and more."
-logo: "/assets/logo.jpg"
-url: "https://gtsintzas.github.io"
-baseurl: ""
-lang: en
+# This line allows posts to have a future date. 
+# I don't need it, but like, LOL.
+# future: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-remote-theme
+remote_theme: tocttou/hacker-blog
+  
+# Custom variables
+owner : "Ioannis Tsintzas"
+year : "2026"
